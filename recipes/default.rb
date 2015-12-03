@@ -43,6 +43,30 @@ formatron_grafana_datasource 'graphite' do
   basic_auth false
 end
 
+formatron_grafana_datasource 'topbeat' do
+  type 'elasticsearch'
+  url "http://localhost:9200"
+  access 'proxy'
+  basic_auth false
+  database '[topbeat-]YYYY.MM.DD'
+end
+
+formatron_grafana_datasource 'filebeat' do
+  type 'elasticsearch'
+  url "http://localhost:9200"
+  access 'proxy'
+  basic_auth false
+  database '[filebeat-]YYYY.MM.DD'
+end
+
+formatron_grafana_datasource 'packetbeat' do
+  type 'elasticsearch'
+  url "http://localhost:9200"
+  access 'proxy'
+  basic_auth false
+  database '[packetbeat-]YYYY.MM.DD'
+end
+
 formatron_beats_elasticsearch_template 'packetbeat'
 formatron_beats_elasticsearch_template 'topbeat'
 formatron_beats_elasticsearch_template 'filebeat'
