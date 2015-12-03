@@ -49,6 +49,10 @@ formatron_grafana_datasource 'topbeat' do
   access 'proxy'
   basic_auth false
   database '[topbeat-]YYYY.MM.DD'
+  json_data(
+    'interval' => 'Daily',
+    'timeField' => '@timestamp'
+  )
 end
 
 formatron_grafana_datasource 'filebeat' do
@@ -57,6 +61,10 @@ formatron_grafana_datasource 'filebeat' do
   access 'proxy'
   basic_auth false
   database '[filebeat-]YYYY.MM.DD'
+  json_data(
+    'interval' => 'Daily',
+    'timeField' => '@timestamp'
+  )
 end
 
 formatron_grafana_datasource 'packetbeat' do
@@ -65,6 +73,10 @@ formatron_grafana_datasource 'packetbeat' do
   access 'proxy'
   basic_auth false
   database '[packetbeat-]YYYY.MM.DD'
+  json_data(
+    'interval' => 'Daily',
+    'timeField' => '@timestamp'
+  )
 end
 
 formatron_beats_elasticsearch_template 'packetbeat'
