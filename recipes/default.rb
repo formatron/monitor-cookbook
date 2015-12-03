@@ -1,5 +1,8 @@
 require 'securerandom'
 
+node.override['build-essential']['compile_time'] = true
+include_recipe 'build-essential::default'
+
 configuration = node['formatron_monitor']['configuration']
 
 hosted_zone_name = configuration['dsl']['global']['hosted_zone_name']
