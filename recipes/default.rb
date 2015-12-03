@@ -39,3 +39,7 @@ formatron_grafana_datasource 'graphite' do
   access 'proxy'
   basic_auth false
 end
+
+include_recipe 'formatron_packetbeat::elasticsearch_template'
+include_recipe 'formatron_topbeat::elasticsearch_template'
+include_recipe 'formatron_filebeat::elasticsearch_template'
