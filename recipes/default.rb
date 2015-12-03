@@ -43,6 +43,6 @@ formatron_grafana_datasource 'graphite' do
   basic_auth false
 end
 
-include_recipe 'formatron_packetbeat::elasticsearch_template'
-include_recipe 'formatron_topbeat::elasticsearch_template'
-include_recipe 'formatron_filebeat::elasticsearch_template'
+formatron_beats_elasticsearch_template 'packetbeat'
+formatron_beats_elasticsearch_template 'topbeat'
+formatron_beats_elasticsearch_template 'filebeat'
