@@ -6,7 +6,6 @@ use_inline_resources
 
 action :create do
   name = new_resource.name
-  hosted_zone_name = new_resource.hosted_zone_name
   formatron_grafana_dashboard "#{name} instance" do
     model(
       'tags' => [],
@@ -67,7 +66,7 @@ action :create do
               'targets' => [
                 {
                   'refId' => 'B',
-                  'target' => "#{name}.#{hosted_zone_name}.user_percent.mem.*"
+                  'target' => "#{name}.user_percent.mem.*"
                 }
               ],
               'timeFrom' => nil,
@@ -137,7 +136,7 @@ action :create do
               'targets' => [
                 {
                   'refId' => 'A',
-                  'target' => "#{name}.#{hosted_zone_name}.cpu.idle"
+                  'target' => "#{name}.cpu.idle"
                 }
               ],
               'timeFrom' => nil,
@@ -207,7 +206,7 @@ action :create do
               'targets' => [
                 {
                   'refId' => 'A',
-                  'target' => "#{name}.#{hosted_zone_name}.user_percent.cpu.*"
+                  'target' => "#{name}.user_percent.cpu.*"
                 }
               ],
               'timeFrom' => nil,
