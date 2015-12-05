@@ -131,17 +131,21 @@ action :create do
               'renderer' => 'flot',
               'seriesOverrides' => [],
               'span' => 12,
-              'stack' => false,
+              'stack' => true,
               'steppedLine' => false,
               'targets' => [
                 {
                   'refId' => 'A',
                   'target' => "#{name}.cpu.idle"
+                },
+                {
+                  'refId' => 'B',
+                  'target' => "#{name}.cpu.steal"
                 }
               ],
               'timeFrom' => nil,
               'timeShift' => nil,
-              'title' => 'CPU idle',
+              'title' => 'CPU idle/steal',
               'tooltip' => {
                 'shared' => true,
                 'value_type' => 'cumulative'
