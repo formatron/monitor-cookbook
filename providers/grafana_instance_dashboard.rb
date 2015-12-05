@@ -21,6 +21,68 @@ action :create do
           'height' => '250px',
           'panels' => [
             {
+              'title' => 'Disk usage',
+              'error' => false,
+              'span' => 6,
+              'editable' => true,
+              'type' => 'graph',
+              'id' => 4,
+              'datasource' => 'graphite',
+              'renderer' => 'flot',
+              'x-axis' => true,
+              'y-axis' => true,
+              'y_formats' => [
+                'short',
+                'short'
+              ],
+              'grid' => {
+                'leftLogBase' => 1,
+                'leftMax' => nil,
+                'rightMax' => nil,
+                'leftMin' => nil,
+                'rightMin' => nil,
+                'rightLogBase' => 1,
+                'threshold1' => nil,
+                'threshold2' => nil,
+                'threshold1Color' => 'rgba(216, 200, 27, 0.27)',
+                'threshold2Color' => 'rgba(234, 112, 112, 0.22)'
+              },
+              'lines' => true,
+              'fill' => 1,
+              'linewidth' => 2,
+              'points' => false,
+              'pointradius' => 5,
+              'bars' => false,
+              'stack' => false,
+              'percentage' => false,
+              'legend' => {
+                'show' => true,
+                'values' => false,
+                'min' => false,
+                'max' => false,
+                'current' => false,
+                'total' => false,
+                'avg' => false
+              },
+              'nullPointMode' => 'connected',
+              'steppedLine' => false,
+              'tooltip' => {
+                'value_type' => 'cumulative',
+                'shared' => true
+              },
+              'timeFrom' => nil,
+              'timeShift' => nil,
+              'targets' => [
+                {
+                  'refId' => 'A',
+                  'target' => '#{name}.disk_usage.*.used_percentage'
+                }
+              ],
+              'aliasColors' => {},
+              'seriesOverrides' => [],
+              'links' => []
+            },
+            {
               'aliasColors' => {},
               'bars' => false,
               'datasource' => 'graphite',
@@ -60,13 +122,13 @@ action :create do
               'seriesOverrides' => [
                 {}
               ],
-              'span' => 12,
+              'span' => 6,
               'stack' => true,
               'steppedLine' => false,
               'targets' => [
                 {
                   'refId' => 'B',
-                  'target' => "#{name}.user_percent.mem.*"
+                  'target' => '#{name}.user_percent.mem.*'
                 }
               ],
               'timeFrom' => nil,
@@ -85,7 +147,7 @@ action :create do
               ]
             }
           ],
-          'title' => 'Row'
+          'title' => 'New row'
         },
         {
           'collapse' => false,
@@ -130,17 +192,17 @@ action :create do
               'points' => false,
               'renderer' => 'flot',
               'seriesOverrides' => [],
-              'span' => 12,
+              'span' => 6,
               'stack' => true,
               'steppedLine' => false,
               'targets' => [
                 {
                   'refId' => 'A',
-                  'target' => "#{name}.cpu.idle"
+                  'target' => '#{name}.cpu.idle'
                 },
                 {
                   'refId' => 'B',
-                  'target' => "#{name}.cpu.steal"
+                  'target' => '#{name}.cpu.steal'
                 }
               ],
               'timeFrom' => nil,
@@ -157,15 +219,7 @@ action :create do
                 'short',
                 'short'
               ]
-            }
-          ],
-          'title' => 'New row'
-        },
-        {
-          'collapse' => false,
-          'editable' => true,
-          'height' => '250px',
-          'panels' => [
+            },
             {
               'aliasColors' => {},
               'bars' => false,
@@ -204,13 +258,13 @@ action :create do
               'points' => false,
               'renderer' => 'flot',
               'seriesOverrides' => [],
-              'span' => 12,
+              'span' => 6,
               'stack' => true,
               'steppedLine' => false,
               'targets' => [
                 {
                   'refId' => 'A',
-                  'target' => "#{name}.user_percent.cpu.*"
+                  'target' => '#{name}.user_percent.cpu.*'
                 }
               ],
               'timeFrom' => nil,
@@ -270,6 +324,6 @@ action :create do
       },
       'schemaVersion' => 7,
       'links' => []
-        )
+    )
   end
 end
