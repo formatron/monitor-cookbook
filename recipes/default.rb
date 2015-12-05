@@ -40,6 +40,12 @@ formatron_grafana_datasource 'graphite' do
   basic_auth false
 end
 
+node['formatron_monitor']['grafana_instance_dashboards'].each do |name|
+  formatron_monitor_grafana_instance_dashboard name do
+    hosted_zone_name hosted_zone_name
+  end
+end
+
 formatron_grafana_datasource 'topbeat' do
   type 'elasticsearch'
   url "http://localhost:9200"
