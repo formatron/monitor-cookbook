@@ -75,7 +75,7 @@ action :create do
               'targets' => [
                 {
                   'refId' => 'A',
-                  'target' => '#{name}.disk_usage.*.used_percentage'
+                  'target' => "#{name}.disk_usage.*.used_percentage"
                 }
               ],
               'aliasColors' => {},
@@ -128,7 +128,7 @@ action :create do
               'targets' => [
                 {
                   'refId' => 'B',
-                  'target' => '#{name}.user_percent.mem.*'
+                  'target' => "#{name}.user_percent.mem.*"
                 }
               ],
               'timeFrom' => nil,
@@ -198,11 +198,11 @@ action :create do
               'targets' => [
                 {
                   'refId' => 'A',
-                  'target' => '#{name}.cpu.idle'
+                  'target' => "#{name}.cpu.idle"
                 },
                 {
                   'refId' => 'B',
-                  'target' => '#{name}.cpu.steal'
+                  'target' => "#{name}.cpu.steal"
                 }
               ],
               'timeFrom' => nil,
@@ -264,7 +264,7 @@ action :create do
               'targets' => [
                 {
                   'refId' => 'A',
-                  'target' => '#{name}.user_percent.cpu.*'
+                  'target' => "#{name}.user_percent.cpu.*"
                 }
               ],
               'timeFrom' => nil,
