@@ -85,5 +85,3 @@ end
 formatron_beats_elasticsearch_template 'packetbeat'
 formatron_beats_elasticsearch_template 'topbeat'
 formatron_beats_elasticsearch_template 'filebeat'
-
-include_recipe 'formatron_monitor::beats_dashboards'
