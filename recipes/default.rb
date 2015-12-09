@@ -84,4 +84,3 @@ end
 
 formatron_beats_elasticsearch_template 'packetbeat'
 formatron_beats_elasticsearch_template 'topbeat'
-formatron_beats_elasticsearch_template 'filebeat'
