@@ -46,41 +46,14 @@ node['formatron_monitor']['grafana_instance_dashboards'].each do |name|
   end
 end
 
-formatron_grafana_datasource 'topbeat' do
+formatron_grafana_datasource 'logstash' do
   type 'elasticsearch'
   url "http://localhost:9200"
   access 'proxy'
   basic_auth false
-  database '[topbeat-]YYYY.MM.DD'
+  database '[logstash-]YYYY.MM.DD'
   json_data(
     'interval' => 'Daily',
     'timeField' => '@timestamp'
   )
 end
-
-formatron_grafana_datasource 'filebeat' do
-  type 'elasticsearch'
-  url "http://localhost:9200"
-  access 'proxy'
-  basic_auth false
-  database '[filebeat-]YYYY.MM.DD'
-  json_data(
-    'interval' => 'Daily',
-    'timeField' => '@timestamp'
-  )
-end
-
-formatron_grafana_datasource 'packetbeat' do
-  type 'elasticsearch'
-  url "http://localhost:9200"
-  access 'proxy'
-  basic_auth false
-  database '[packetbeat-]YYYY.MM.DD'
-  json_data(
-    'interval' => 'Daily',
-    'timeField' => '@timestamp'
-  )
-end
-
-formatron_beats_elasticsearch_template 'packetbeat'
-formatron_beats_elasticsearch_template 'topbeat'
