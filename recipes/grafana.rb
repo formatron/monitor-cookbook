@@ -19,8 +19,8 @@ ldap_first_name_attr = ldap_config['first_name_attr']
 ldap_last_name_attr = ldap_config['last_name_attr']
 ldap_member_of_attr = ldap_config['member_of_attr']
 ldap_email_attr = ldap_config['email_attr']
-ldap_admin_group_dn = grafana_config['ldap_admin_group_dn']
-ldap_editor_group_dn = grafana_config['ldap_editor_group_dn']
+ldap_admin_group_dn = grafana_secrets['ldap_admin_group_dn']
+ldap_editor_group_dn = grafana_secrets['ldap_editor_group_dn']
 
 node.override['formatron_grafana']['admin']['user'] = grafana_admin_user
 node.override['formatron_grafana']['admin']['password'] = grafana_admin_password
