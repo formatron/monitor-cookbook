@@ -7,9 +7,10 @@ graphite_host = "#{graphite_config['sub_domain']}.#{hosted_zone_name}"
 graphite_carbon_port = 2003
 
 sensu_config = configuration['config']['sensu']
-rabbitmq_vhost = sensu_config['rabbitmq']['vhost']
-rabbitmq_user = sensu_config['rabbitmq']['user']
-rabbitmq_password = sensu_config['rabbitmq']['password']
+sensu_secrets = configuration['config']['secrets']['sensu']
+rabbitmq_vhost = sensu_secrets['rabbitmq']['vhost']
+rabbitmq_user = sensu_secrets['rabbitmq']['user']
+rabbitmq_password = sensu_secrets['rabbitmq']['password']
 sensu_checks = sensu_config['checks']
 sensu_gems = sensu_config['gems']
 

@@ -1,5 +1,5 @@
 name 'formatron_monitor'
-version '0.1.1'
+version '0.1.2'
 description 'Formatron monitor cookbook'
 maintainer 'Peter Halliday'
 maintainer_email 'pghalliday@gmail.com'

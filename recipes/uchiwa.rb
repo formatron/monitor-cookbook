@@ -9,14 +9,15 @@ sensu_config = configuration['config']['sensu']
 sensu_hostname = "#{sensu_config['sub_domain']}.#{hosted_zone_name}"
 
 ldap_config = configuration['config']['ldap']
+ldap_secrets = configuration['config']['secrets']['ldap']
 ldap_hostname = "#{ldap_config['sub_domain']}.#{hosted_zone_name}"
 ldap_port = ldap_config['port']
 ldap_search_base = ldap_config['search_base']
 ldap_dn_suffix = ldap_config['dn_suffix']
 ldap_uid = ldap_config['uid']
 ldap_auth_name = ldap_config['auth_name']
-ldap_bind_dn = ldap_config['bind_dn']
-ldap_bind_password = ldap_config['bind_password']
+ldap_bind_dn = ldap_secrets['bind_dn']
+ldap_bind_password = ldap_secrets['bind_password']
 
 node.default['formatron_uchiwa']['host'] = 'localhost'
 node.default['formatron_uchiwa']['port'] = 3001
