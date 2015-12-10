@@ -1,5 +1,8 @@
 name 'formatron_monitor'
 version '0.1.0'
+description 'Formatron monitor cookbook'
+source_url 'https://github.com/formatron/monitor-cookbook'
+issues_url 'https://github.com/formatron/monitor-cookbook/issues'
 supports 'ubuntu'
 depends 'java'
 depends 'build-essential'
