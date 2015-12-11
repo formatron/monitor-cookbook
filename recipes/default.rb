@@ -41,7 +41,8 @@ formatron_grafana_datasource 'graphite' do
 end
 
 node['formatron_monitor']['grafana_instance_dashboards'].each do |name|
-  formatron_monitor_grafana_instance_dashboard name do
+  sub_domain = configuration['config'][name]['sub_domain']
+  formatron_monitor_grafana_instance_dashboard sub_domain do
     hosted_zone_name hosted_zone_name
   end
 end
