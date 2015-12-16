@@ -17,8 +17,8 @@ ldap_bind_dn = ldap_secrets['bind_dn']
 ldap_bind_password = ldap_secrets['bind_password']
 
 logstash_config = configuration['config']['logstash']
+port = logstash_config['beats_port']
 node.default['formatron_elasticsearch']['params']['network.host'] = 'localhost'
-node.default['formatron_logstash']['port'] = logstash_config['beats_port']
 node.default['formatron_kibana']['params']['server.host'] = 'localhost'
 
 include_recipe 'formatron_elk::default'
@@ -32,3 +32,35 @@ formatron_apache_proxy kibana_hostname do
   notifies :reload, 'service[apache2]', :delayed
 end
 apache_site kibana_hostname
+
+formatron_logstash_input 'inputs' do
+  template 'inputs.conf.erb'
+  variables(
+    port: port
+  )
+  notifies :restart, 'service[logstash]', :delayed
+end
+
+patterns_dir = '/etc/logstash/conf.d/patterns'
+nginx_patterns = File.join patterns_dir, 'nginx'
+
+directory patterns_dir do
+  recursive true
+end
+
+cookbook_file nginx_patterns do
+  notifies :restart, 'service[logstash]', :delayed
+end
+
+formatron_logstash_filter 'filters' do
+  template 'filters.conf.erb'
+  variables(
+    patterns_dir: patterns_dir
+  )
+  notifies :restart, 'service[logstash]', :delayed
+end
+
+formatron_logstash_output 'outputs' do
+  template 'outputs.conf.erb'
+  notifies :restart, 'service[logstash]', :delayed
+end
