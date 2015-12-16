@@ -15,6 +15,7 @@ filter {
   }
   if [type] == "syslog" {
     grok {
+      overwrite => "message"
       match => { "message" => "%{SYSLOGLINE}" }
       add_field => [ "received_at", "%{@timestamp}" ]
       add_field => [ "received_from", "%{host}" ]
